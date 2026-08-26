@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-from forge.stamps import stamped_tower
+from forge.actions import Action
+from forge.stamps import STAMP_PATH, stamped_tower
 
 
 class TestQuarantine:
@@ -34,9 +35,6 @@ class TestQuarantine:
         assert not project.quarantine_holds(report)
 
     def test_a_leaked_stamp_is_caught_by_the_arithmetic(self):
-        from forge.actions import Action
-        from forge.stamps import STAMP_PATH
-
         project, tree = stamped_tower(units=2)
 
         def leaky_rule(view) -> None:
