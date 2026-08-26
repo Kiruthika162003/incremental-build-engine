@@ -10,6 +10,7 @@ AUDITS = (
     "forge.audits.cutoffworth",
     "forge.audits.sharedmorning",
     "forge.audits.stampquarantine",
+    "forge.audits.selectrefund",
 )
 
 
