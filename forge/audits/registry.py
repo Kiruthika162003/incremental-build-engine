@@ -12,6 +12,7 @@ AUDITS = (
     "forge.audits.stampquarantine",
     "forge.audits.selectrefund",
     "forge.audits.workercurve",
+    "forge.audits.regretledger",
 )
 
 
