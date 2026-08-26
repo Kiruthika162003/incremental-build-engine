@@ -9,6 +9,7 @@ from forge.audits.finding import Finding
 AUDITS = (
     "forge.audits.cutoffworth",
     "forge.audits.sharedmorning",
+    "forge.audits.stampquarantine",
 )
 
 
