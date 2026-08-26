@@ -54,7 +54,7 @@ class TestTheManifest:
         assert first.attestation() == second.attestation()
 
     def test_a_changed_source_changes_the_attestation(self):
-        engine, manifest = built()
+        _, manifest = built()
         tree = Workspace()
         tree.write_text("main.c", "int main; // v2")
         tree.write_text("lib.c", "int lib;")
