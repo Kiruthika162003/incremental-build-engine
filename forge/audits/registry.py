@@ -11,6 +11,7 @@ AUDITS = (
     "forge.audits.sharedmorning",
     "forge.audits.stampquarantine",
     "forge.audits.selectrefund",
+    "forge.audits.workercurve",
 )
 
 
