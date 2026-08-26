@@ -49,8 +49,8 @@ class SchemaGenerator:
     def _parse_types(self, tree: Workspace) -> list[str]:
         text = tree.read_text(self.schema_path)
         types = []
-        for line in text.splitlines():
-            line = line.strip()
+        for raw in text.splitlines():
+            line = raw.strip()
             if line.startswith("type "):
                 name = line.split()[1]
                 if name in types:
