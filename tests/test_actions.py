@@ -37,7 +37,7 @@ class TestContracts:
                 command="true",
                 reads=(),
                 writes=(),
-                rule=lambda tree: None,
+                rule=lambda _tree: None,
             )
 
     def test_in_place_mutation_is_refused(self):
@@ -47,7 +47,7 @@ class TestContracts:
                 command="sed -i",
                 reads=("f.txt",),
                 writes=("f.txt",),
-                rule=lambda tree: None,
+                rule=lambda _tree: None,
             )
 
 
