@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from examples import firstproject
+from examples import firstproject, monorepoday
 
 
 class TestFirstProject:
@@ -12,3 +12,13 @@ class TestFirstProject:
         assert "edit:  app: 8 visited, 3 ran, 2 from cache" in out
         assert "main.o untouched" in out
         assert "7 hits, 8 misses (47%)" in out
+
+
+class TestMonorepoDay:
+    def test_the_day_reads_in_numbers(self, capsys):
+        assert monorepoday.main() == 0
+        out = capsys.readouterr().out
+        assert "morning edit: 1 changed: run 1, skip 3 (75% refund)" in out
+        assert "core edit:    1 changed: run 4, skip 0 (0% refund)" in out
+        assert "7 builds for 5 merges (1.4 builds per change), 1 exiled" in out
+        assert "culprit: c19, found in 7 builds over a window of 32" in out
