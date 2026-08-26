@@ -43,7 +43,7 @@ def compare(layout, tree):
 
 
 def main() -> int:
-    project, tree = build_and_stamp()
+    _, tree = build_and_stamp()
     layout, _ = package(tree)
     compare(layout, tree)
     return 0
