@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from examples import firstproject, monorepoday
+from examples import firstproject, monorepoday, releasepipeline
 
 
 class TestFirstProject:
@@ -22,3 +22,13 @@ class TestMonorepoDay:
         assert "core edit:    1 changed: run 4, skip 0 (0% refund)" in out
         assert "7 builds for 5 merges (1.4 builds per change), 1 exiled" in out
         assert "culprit: c19, found in 7 builds over a window of 32" in out
+
+
+class TestReleasePipeline:
+    def test_the_pipeline_ships_knowingly(self, capsys):
+        assert releasepipeline.main() == 0
+        out = capsys.readouterr().out
+        assert "restamp:      ran ['release'], quarantine holds" in out
+        assert "install:      2 placed, 0 strays swept" in out
+        assert "package id:   " in out
+        assert "drift:        bin/release: content moved" in out
