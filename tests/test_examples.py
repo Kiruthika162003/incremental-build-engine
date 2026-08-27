@@ -9,6 +9,7 @@ from examples import (
     graphhealth,
     migrationday,
     monorepoday,
+    nightshift,
     opsweek,
     perfweek,
     refactorweek,
@@ -91,6 +92,23 @@ class TestSupplyChain:
         ) in out
         assert "licenses: MIT: 1, Zlib: 1, proprietary: 1" in out
         assert "externals: json, zlib" in out
+
+
+class TestNightShift:
+    def test_the_night_reads_end_to_end(self, capsys):
+        assert nightshift.main() == 0
+        out = capsys.readouterr().out
+        assert (
+            "TORN WORLD: core.c: pinned r4400, consumed r4401"
+        ) in out
+        assert "the next build starts from a moved world" in out
+        assert "1 agreement(s), 1 contradiction(s), 0 drift" in out
+        assert (
+            "warm-core-cone yields immediately with 25 tick(s) "
+            "kept"
+        ) in out
+        assert "1 record(s) survived, 1 amputated" in out
+        assert "calendar served 27, reaction served 13" in out
 
 
 class TestOpsWeek:
