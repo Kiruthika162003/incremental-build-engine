@@ -20,6 +20,7 @@ AUDITS = (
     "forge.audits.layerbill",
     "forge.audits.linkseason",
     "forge.audits.trustdrill",
+    "forge.audits.facedrill",
 )
 
 
