@@ -21,6 +21,7 @@ AUDITS = (
     "forge.audits.linkseason",
     "forge.audits.trustdrill",
     "forge.audits.facedrill",
+    "forge.audits.flapbill",
 )
 
 
