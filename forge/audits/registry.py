@@ -17,6 +17,7 @@ AUDITS = (
     "forge.audits.mtimebill",
     "forge.audits.batcheconomy",
     "forge.audits.warmscore",
+    "forge.audits.layerbill",
 )
 
 
