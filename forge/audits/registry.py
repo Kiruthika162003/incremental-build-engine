@@ -19,6 +19,7 @@ AUDITS = (
     "forge.audits.warmscore",
     "forge.audits.layerbill",
     "forge.audits.linkseason",
+    "forge.audits.trustdrill",
 )
 
 
