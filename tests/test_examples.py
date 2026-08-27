@@ -1,6 +1,12 @@
 from __future__ import annotations
 
-from examples import coldci, firstproject, monorepoday, releasepipeline
+from examples import (
+    coldci,
+    firstproject,
+    monorepoday,
+    refactorweek,
+    releasepipeline,
+)
 
 
 class TestFirstProject:
@@ -41,3 +47,16 @@ class TestColdCi:
         assert "lints:   3 spawns for 9 actions; 18 floor ticks avoided" in out
         assert "probe:   stamper: FLAKY, outputs differ at ['stamp.out']" in out
         assert "98% of the build stayed in the sky" in out
+
+
+class TestRefactorWeek:
+    def test_the_week_reads_end_to_end(self, capsys):
+        assert refactorweek.main() == 0
+        out = capsys.readouterr().out
+        assert (
+            "netlib -> network_lib [90 ticks left]: billing (2x), "
+            "search (1x)"
+        ) in out
+        assert "cache impact: 1 existing targets will miss (app)" in out
+        assert "declare auth/internal restricted to ['billing']" in out
+        assert "orphans: ['search'], ghost-owned: []" in out
