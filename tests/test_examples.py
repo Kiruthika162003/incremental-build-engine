@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from examples import (
+    cacheday,
     coldci,
     editsession,
     farmday,
@@ -89,6 +90,26 @@ class TestSupplyChain:
         ) in out
         assert "licenses: MIT: 1, Zlib: 1, proprietary: 1" in out
         assert "externals: json, zlib" in out
+
+
+class TestCacheDay:
+    def test_the_day_reads_end_to_end(self, capsys):
+        assert cacheday.main() == 0
+        out = capsys.readouterr().out
+        assert (
+            "2 promotion(s), 2 re-asked saving 48 tick(s), "
+            "0 freight paid for nothing"
+        ) in out
+        assert (
+            "1 build(s) for 200 request(s): spent 90 tick(s) "
+            "where the echo pays 18000"
+        ) in out
+        assert "owned share 33%: riding main's work" in out
+        assert "KEYBUG compile:b" in out
+        assert (
+            "6 failure(s) served, 540 tick(s) saved, "
+            "90 spent certifying"
+        ) in out
 
 
 class TestPerfWeek:
