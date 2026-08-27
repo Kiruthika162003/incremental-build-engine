@@ -9,6 +9,7 @@ from examples import (
     graphhealth,
     migrationday,
     monorepoday,
+    opsweek,
     perfweek,
     refactorweek,
     releasepipeline,
@@ -90,6 +91,21 @@ class TestSupplyChain:
         ) in out
         assert "licenses: MIT: 1, Zlib: 1, proprietary: 1" in out
         assert "externals: json, zlib" in out
+
+
+class TestOpsWeek:
+    def test_the_week_reads_end_to_end(self, capsys):
+        assert opsweek.main() == 0
+        out = capsys.readouterr().out
+        assert "rack7-new admitted after 2 probe(s)" in out
+        assert "one wrong known answer, machine refused" in out
+        assert "the preflight earns 88" in out
+        assert (
+            "measured speedup 10.0x (100 cold against "
+            "10 cached)"
+        ) in out
+        assert "release build waits until 130" in out
+        assert "9760 byte(s) of freight saved" in out
 
 
 class TestCacheDay:
