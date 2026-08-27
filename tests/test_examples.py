@@ -8,6 +8,7 @@ from examples import (
     graphhealth,
     migrationday,
     monorepoday,
+    perfweek,
     refactorweek,
     releasepipeline,
     supplychain,
@@ -88,6 +89,20 @@ class TestSupplyChain:
         ) in out
         assert "licenses: MIT: 1, Zlib: 1, proprietary: 1" in out
         assert "externals: json, zlib" in out
+
+
+class TestPerfWeek:
+    def test_the_week_reads_end_to_end(self, capsys):
+        assert perfweek.main() == 0
+        out = capsys.readouterr().out
+        assert (
+            "1 benchmark(s) armed, 1 declined for noise, "
+            "1 regression(s)"
+        ) in out
+        assert "REGRESSION parse: 8.0%" in out
+        assert "refresh soon: coverage fell to 60%" in out
+        assert "OVERDRAFT 50ms" in out
+        assert "60 tick(s) returned to the developer" in out
 
 
 class TestMigrationDay:
