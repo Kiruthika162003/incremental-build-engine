@@ -15,6 +15,7 @@ AUDITS = (
     "forge.audits.regretledger",
     "forge.audits.walletdrill",
     "forge.audits.mtimebill",
+    "forge.audits.batcheconomy",
 )
 
 
