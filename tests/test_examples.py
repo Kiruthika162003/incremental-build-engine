@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from examples import firstproject, monorepoday, releasepipeline
+from examples import coldci, firstproject, monorepoday, releasepipeline
 
 
 class TestFirstProject:
@@ -32,3 +32,12 @@ class TestReleasePipeline:
         assert "install:      2 placed, 0 strays swept" in out
         assert "package id:   " in out
         assert "drift:        bin/release: content moved" in out
+
+
+class TestColdCi:
+    def test_the_morning_reads_in_three_lines(self, capsys):
+        assert coldci.main() == 0
+        out = capsys.readouterr().out
+        assert "lints:   3 spawns for 9 actions; 18 floor ticks avoided" in out
+        assert "probe:   stamper: FLAKY, outputs differ at ['stamp.out']" in out
+        assert "98% of the build stayed in the sky" in out
