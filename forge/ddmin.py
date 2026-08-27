@@ -9,9 +9,13 @@ granularity when neither helps, until the set is 1-minimal,
 meaning every remaining input is load-bearing: remove any one
 and the failure disappears. The oracle bill is printed with the
 result because minimization is a purchase, oracle runs are real
-builds, and the number that sells ddmin is the pair: four
-hundred inputs became three for the price of nineteen builds,
-which is a bargain any afternoon the bug is confusing enough.
+builds, and the guess of the price was optimistic: the prose
+first claimed nineteen builds, the measured drill says a single
+culprit in sixteen inputs costs 8 builds and an interacting
+pair costs 49, because pairs defeat the keep-a-chunk shortcut
+and pay full complement fare at every granularity. Still a
+bargain any afternoon the bug is confusing enough, but the
+meter, not the sales pitch, sets the price.
 """
 
 from __future__ import annotations
