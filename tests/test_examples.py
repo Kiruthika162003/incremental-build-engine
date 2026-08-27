@@ -9,6 +9,7 @@ from examples import (
     refactorweek,
     releasepipeline,
     supplychain,
+    vendorweek,
 )
 
 
@@ -85,6 +86,22 @@ class TestSupplyChain:
         ) in out
         assert "licenses: MIT: 1, Zlib: 1, proprietary: 1" in out
         assert "externals: json, zlib" in out
+
+
+class TestVendorWeek:
+    def test_the_week_reads_end_to_end(self, capsys):
+        assert vendorweek.main() == 0
+        out = capsys.readouterr().out
+        assert (
+            "corrupt: mirror/curl/deadbeef/curl-8.5.tar "
+            "expected deadbeef found 00000000"
+        ) in out
+        assert "1 stray file(s) rotting harmlessly" in out
+        assert "stale = ['win32-workaround']" in out
+        assert "app ships clean: 3 components" in out
+        assert "NOTICE: Compression by the zlib authors." in out
+        assert "which vendor produced" in out
+        assert "root causes: ['zlib.tar']" in out
 
 
 class TestGraphHealth:
