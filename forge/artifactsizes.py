@@ -17,6 +17,7 @@ that mattered.
 
 from __future__ import annotations
 
+import itertools
 from dataclasses import dataclass, field
 
 from forge.errors import Invalid
@@ -78,9 +79,7 @@ class SizeLedger:
                 f"{artifact} has too little history to attribute"
             )
         deltas = []
-        for (_, before), (build, after) in zip(
-            rows, rows[1:], strict=False
-        ):
+        for (_, before), (build, after) in itertools.pairwise(rows):
             delta = after - before
             if delta > 0:
                 deltas.append((delta, build))
