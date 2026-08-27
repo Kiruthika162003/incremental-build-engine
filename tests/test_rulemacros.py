@@ -46,7 +46,7 @@ class TestExpansion:
 class TestHygiene:
     def test_a_stanza_outside_the_prefix_is_refused(self):
         def rogue(instance: str, params: dict) -> list[Stanza]:
-            del params
+            del instance, params
             return [
                 Stanza(
                     name="global-target",
