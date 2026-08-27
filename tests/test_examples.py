@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from examples import (
     coldci,
+    editsession,
     firstproject,
     monorepoday,
     refactorweek,
@@ -60,3 +61,13 @@ class TestRefactorWeek:
         assert "cache impact: 1 existing targets will miss (app)" in out
         assert "declare auth/internal restricted to ['billing']" in out
         assert "orphans: ['search'], ghost-owned: []" in out
+
+
+class TestEditSession:
+    def test_the_session_reads_end_to_end(self, capsys):
+        assert editsession.main() == 0
+        out = capsys.readouterr().out
+        assert "save:   main.c moved; cone of 2, 2 rebuilt" in out
+        assert "4 polls, 3 quiet, 1 rebuilds" in out
+        assert "buffer: keys diverge" in out
+        assert "compdb: fresh" in out
