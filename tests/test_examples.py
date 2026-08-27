@@ -8,6 +8,7 @@ from examples import (
     farmday,
     firstproject,
     graphhealth,
+    incidentreview,
     migrationday,
     monorepoday,
     nightshift,
@@ -94,6 +95,23 @@ class TestSupplyChain:
         ) in out
         assert "licenses: MIT: 1, Zlib: 1, proprietary: 1" in out
         assert "externals: json, zlib" in out
+
+
+class TestIncidentReview:
+    def test_the_five_exhibits_read_end_to_end(self, capsys):
+        assert incidentreview.main() == 0
+        out = capsys.readouterr().out
+        assert "(partial, and saying so)" in out
+        assert "BLIND: cache contributed no span" in out
+        assert (
+            "1 split-brain write(s) converted from corruption "
+            "into log lines"
+        ) in out
+        assert "closed 35 tick(s) early" in out
+        assert "FROZEN: the budget is overspent by 10" in out
+        assert (
+            "published 95.5 stands, restated 88.0 beside it"
+        ) in out
 
 
 class TestPlatformQuarter:
