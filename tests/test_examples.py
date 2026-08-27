@@ -3,6 +3,7 @@ from __future__ import annotations
 from examples import (
     cacheday,
     coldci,
+    devday,
     editsession,
     farmday,
     firstproject,
@@ -92,6 +93,20 @@ class TestSupplyChain:
         ) in out
         assert "licenses: MIT: 1, Zlib: 1, proprietary: 1" in out
         assert "externals: json, zlib" in out
+
+
+class TestDevDay:
+    def test_the_day_reads_end_to_end(self, capsys):
+        assert devday.main() == 0
+        out = capsys.readouterr().out
+        assert "clean after 7 tick(s); submit" in out
+        assert "the 24-tick mean describes nobody's edit" in out
+        assert "25% of edits losing the developer" in out
+        assert (
+            "paid 4 ticks where restart-everything pays 48"
+        ) in out
+        assert "ran 4, avoided 20" in out
+        assert "the farm paid 120 tick(s) so you waited 8" in out
 
 
 class TestNightShift:
