@@ -5,6 +5,7 @@ import pytest
 from forge.errors import Invalid
 from forge.ninesmath import (
     downtime_minutes_per_year,
+    nines_label,
     parallel,
     platform_promise,
     series,
@@ -20,6 +21,22 @@ class TestTheTable:
     def test_availability_is_a_strict_percentage(self):
         with pytest.raises(Invalid):
             downtime_minutes_per_year(100)
+
+    def test_the_label_counts_nines_with_the_bill(self):
+        assert nines_label(99.9) == (
+            "99.9% is 3 nine(s), 526 minute(s) a year"
+        )
+        assert nines_label(99.0) == (
+            "99.0% is 2 nine(s), 5260 minute(s) a year"
+        )
+        assert nines_label(90.0) == (
+            "90.0% is 1 nine(s), 52596 minute(s) a year"
+        )
+
+    def test_eighty_five_has_nothing_to_brag_about(self):
+        assert nines_label(85.0) == (
+            "85.0% has no nines to brag about"
+        )
 
 
 class TestComposition:

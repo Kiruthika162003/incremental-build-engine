@@ -17,6 +17,8 @@ share a fate, whatever the multiplication says.
 
 from __future__ import annotations
 
+import math
+
 from forge.errors import Invalid
 
 MINUTES_PER_YEAR = 525_960
@@ -56,6 +58,20 @@ def parallel(percents: list[float]) -> str:
         f"{combined:.4f}% assuming independence; replicas "
         "sharing a power feed share a fate, whatever the "
         "multiplication says"
+    )
+
+
+def nines_label(percent: float) -> str:
+    _check(percent)
+    label = math.floor(
+        round(-math.log10(1 - percent / 100), 9)
+    )
+    if label < 1:
+        return f"{percent}% has no nines to brag about"
+    return (
+        f"{percent}% is {label} nine(s), "
+        f"{downtime_minutes_per_year(percent):.0f} minute(s) "
+        "a year"
     )
 
 
