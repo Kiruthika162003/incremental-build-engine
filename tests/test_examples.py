@@ -3,6 +3,7 @@ from __future__ import annotations
 from examples import (
     coldci,
     editsession,
+    farmday,
     firstproject,
     graphhealth,
     monorepoday,
@@ -86,6 +87,20 @@ class TestSupplyChain:
         ) in out
         assert "licenses: MIT: 1, Zlib: 1, proprietary: 1" in out
         assert "externals: json, zlib" in out
+
+
+class TestFarmDay:
+    def test_the_day_reads_end_to_end(self, capsys):
+        assert farmday.main() == 0
+        out = capsys.readouterr().out
+        assert (
+            "2 scale-up(s), 1 scale-down(s), 16 idle worker "
+            "tick(s), 44 queued build tick(s)"
+        ) in out
+        assert "done at tick 70" in out
+        assert "memory-bound (16 memory waits vs 0 worker waits)" in out
+        assert "1 batch jobs promoted by patience" in out
+        assert "mac-arm lacks xcode=15 (pool has 14)" in out
 
 
 class TestVendorWeek:
