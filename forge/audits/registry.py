@@ -25,6 +25,7 @@ AUDITS = (
     "forge.audits.sliceluck",
     "forge.audits.plantruth",
     "forge.audits.growthaddress",
+    "forge.audits.sealedladder",
 )
 
 
