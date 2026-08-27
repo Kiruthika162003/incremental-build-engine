@@ -13,6 +13,7 @@ from examples import (
     nightshift,
     opsweek,
     perfweek,
+    platformquarter,
     refactorweek,
     releasepipeline,
     supplychain,
@@ -93,6 +94,18 @@ class TestSupplyChain:
         ) in out
         assert "licenses: MIT: 1, Zlib: 1, proprietary: 1" in out
         assert "externals: json, zlib" in out
+
+
+class TestPlatformQuarter:
+    def test_the_quarter_reads_end_to_end(self, capsys):
+        assert platformquarter.main() == 0
+        out = capsys.readouterr().out
+        assert "window closed: 80 of 100 spent" in out
+        assert "a named project nobody has staffed yet" in out
+        assert "fix the monitor, not the cap" in out
+        assert "the fault line is mac-sign" in out
+        assert "compile carries 113% of it" in out
+        assert "1 kept, 1 suspended, 1 insurance held" in out
 
 
 class TestDevDay:
