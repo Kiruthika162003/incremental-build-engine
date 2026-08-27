@@ -24,6 +24,7 @@ AUDITS = (
     "forge.audits.flapbill",
     "forge.audits.sliceluck",
     "forge.audits.plantruth",
+    "forge.audits.growthaddress",
 )
 
 
