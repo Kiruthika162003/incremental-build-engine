@@ -18,6 +18,7 @@ AUDITS = (
     "forge.audits.batcheconomy",
     "forge.audits.warmscore",
     "forge.audits.layerbill",
+    "forge.audits.linkseason",
 )
 
 
