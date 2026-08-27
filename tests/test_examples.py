@@ -4,6 +4,7 @@ from examples import (
     coldci,
     editsession,
     firstproject,
+    graphhealth,
     monorepoday,
     refactorweek,
     releasepipeline,
@@ -84,3 +85,13 @@ class TestSupplyChain:
         ) in out
         assert "licenses: MIT: 1, Zlib: 1, proprietary: 1" in out
         assert "externals: json, zlib" in out
+
+
+class TestGraphHealth:
+    def test_the_rounds_read_end_to_end(self, capsys):
+        assert graphhealth.main() == 0
+        out = capsys.readouterr().out
+        assert "declare auth/internal restricted to ['billing']" in out
+        assert "app declares httplib but consumes nothing from it" in out
+        assert "loop: auth, billing" in out
+        assert "add needs = crypto (observed at run time)" in out
