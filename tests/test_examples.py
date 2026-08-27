@@ -6,6 +6,7 @@ from examples import (
     farmday,
     firstproject,
     graphhealth,
+    migrationday,
     monorepoday,
     refactorweek,
     releasepipeline,
@@ -87,6 +88,21 @@ class TestSupplyChain:
         ) in out
         assert "licenses: MIT: 1, Zlib: 1, proprietary: 1" in out
         assert "externals: json, zlib" in out
+
+
+class TestMigrationDay:
+    def test_the_day_reads_end_to_end(self, capsys):
+        assert migrationday.main() == 0
+        out = capsys.readouterr().out
+        assert (
+            "3/4 rules translated clean (75%); 1 need a human, "
+            "1 phony targets dropped"
+        ) in out
+        assert "agreement 67% (2 of 3 outputs)" in out
+        assert "the shadow is the system; cut over" in out
+        assert "3 held total" in out
+        assert "2 compliant, 1 skewed against pin 2.3.0" in out
+        assert "app-9.0 promoted staging -> canary" in out
 
 
 class TestFarmDay:
