@@ -12,6 +12,13 @@ plan marks targets whose actions read undeclared inputs as
 through a hole in the declarations is exactly how plans earn
 distrust, and an honest unknown keeps the rest of the table
 credible.
+
+The plantruth audit measured the plan's other honest limit: a
+comment edit billed at two targets cost one at run time, because
+early cutoff cancels the relink the cone promised. A plan is an
+upper bound, high by exactly the cutoffs only execution can
+discover, and should be read like a quote from a contractor who
+has not yet opened the wall.
 """
 
 from __future__ import annotations

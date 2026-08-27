@@ -23,6 +23,7 @@ AUDITS = (
     "forge.audits.facedrill",
     "forge.audits.flapbill",
     "forge.audits.sliceluck",
+    "forge.audits.plantruth",
 )
 
 
