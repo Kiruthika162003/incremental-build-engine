@@ -17,6 +17,7 @@ from examples import (
     platformquarter,
     refactorweek,
     releasepipeline,
+    shipday,
     supplychain,
     vendorweek,
 )
@@ -95,6 +96,19 @@ class TestSupplyChain:
         ) in out
         assert "licenses: MIT: 1, Zlib: 1, proprietary: 1" in out
         assert "externals: json, zlib" in out
+
+
+class TestShipDay:
+    def test_the_boring_go_reads_end_to_end(self, capsys):
+        assert shipday.main() == 0
+        out = capsys.readouterr().out
+        assert "24.4 cut at c5120 (phase: stabilizing)" in out
+        assert "app-24.4 promoted canary -> production" in out
+        assert "GO (audits, cleanroom, errorbudget)" in out
+        assert "ran 2, avoided 55" in out
+        assert (
+            "genuinely quiet; nothing in flight. (kiruthika)"
+        ) in out
 
 
 class TestIncidentReview:
