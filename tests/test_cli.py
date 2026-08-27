@@ -19,3 +19,7 @@ class TestCli:
     def test_a_command_is_required(self):
         with pytest.raises(SystemExit):
             main([])
+
+    def test_summary_is_one_honest_line(self, capsys):
+        assert main(["summary"]) == 0
+        assert "audits (0 broken)" in capsys.readouterr().out
