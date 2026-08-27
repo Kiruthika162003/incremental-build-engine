@@ -27,6 +27,7 @@ AUDITS = (
     "forge.audits.growthaddress",
     "forge.audits.sealedladder",
     "forge.audits.gamedaydrill",
+    "forge.audits.gatecheck",
 )
 
 
