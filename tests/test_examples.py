@@ -7,6 +7,7 @@ from examples import (
     monorepoday,
     refactorweek,
     releasepipeline,
+    supplychain,
 )
 
 
@@ -71,3 +72,15 @@ class TestEditSession:
         assert "4 polls, 3 quiet, 1 rebuilds" in out
         assert "buffer: keys diverge" in out
         assert "compdb: fresh" in out
+
+
+class TestSupplyChain:
+    def test_the_day_holds_at_every_gate(self, capsys):
+        assert supplychain.main() == 0
+        out = capsys.readouterr().out
+        assert "the midnight 1.9 release changed nothing" in out
+        assert (
+            "quarantine served None, corroboration served 'digest-1'"
+        ) in out
+        assert "licenses: MIT: 1, Zlib: 1, proprietary: 1" in out
+        assert "externals: json, zlib" in out
