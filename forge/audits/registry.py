@@ -13,6 +13,7 @@ AUDITS = (
     "forge.audits.selectrefund",
     "forge.audits.workercurve",
     "forge.audits.regretledger",
+    "forge.audits.walletdrill",
 )
 
 
